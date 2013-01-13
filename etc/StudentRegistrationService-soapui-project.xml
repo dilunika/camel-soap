@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:soapui-project activeEnvironment="Default" name="StudentRegistrationService" resourceRoot="" soapui-version="4.5.1" xmlns:con="http://eviware.com/soapui/config"><con:settings/><con:interface xsi:type="con:WsdlInterface" wsaVersion="NONE" name="IStudentAdministrationServiceServiceSoapBinding" type="wsdl" bindingName="{http://registar.example.camel.jkd.org/}IStudentAdministrationServiceServiceSoapBinding" soapVersion="1_1" anonymous="optional" definition="file:/data/camel/camel-soap/etc/StudentRegistrationService.wsdl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings/><con:definitionCache type="TEXT" rootPart="file:/data/camel/camel-soap/etc/StudentRegistrationService.wsdl"><con:part><con:url>file:/data/camel/camel-soap/etc/StudentRegistrationService.wsdl</con:url><con:content><![CDATA[<wsdl:definitions name="IStudentAdministrationServiceService" targetNamespace="http://registar.example.camel.jkd.org/" xmlns:ns1="http://schemas.xmlsoap.org/soap/http" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://registar.example.camel.jkd.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <wsdl:types>
+    <xs:schema attributeFormDefault="unqualified" elementFormDefault="unqualified" targetNamespace="http://registar.example.camel.jkd.org/" xmlns="http://registar.example.camel.jkd.org/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:complexType name="student">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="dob" type="xs:string"/>
+          <xs:element minOccurs="0" name="name" type="xs:string"/>
+          <xs:element minOccurs="0" name="nic" type="xs:string"/>
+          <xs:element minOccurs="0" name="registrationNumber" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="ServiceException" type="ServiceException"/>
+      <xs:complexType name="ServiceException">
+        <xs:sequence/>
+      </xs:complexType>
+      <xs:element name="provideStudentDetails" type="provideStudentDetails"/>
+      <xs:complexType name="provideStudentDetails">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="nic" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="provideStudentDetailsResponse" type="provideStudentDetailsResponse"/>
+      <xs:complexType name="provideStudentDetailsResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="return" type="student"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="register" type="register"/>
+      <xs:complexType name="register">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="student" type="student"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="registerResponse" type="registerResponse"/>
+      <xs:complexType name="registerResponse">
+        <xs:sequence/>
+      </xs:complexType>
+    </xs:schema>
+  </wsdl:types>
+  <wsdl:message name="provideStudentDetails">
+    <wsdl:part element="tns:provideStudentDetails" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="registerResponse">
+    <wsdl:part element="tns:registerResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="ServiceException">
+    <wsdl:part element="tns:ServiceException" name="ServiceException"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="register">
+    <wsdl:part element="tns:register" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="provideStudentDetailsResponse">
+    <wsdl:part element="tns:provideStudentDetailsResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="IStudentAdministrationService">
+    <wsdl:operation name="provideStudentDetails">
+      <wsdl:input message="tns:provideStudentDetails" name="provideStudentDetails"></wsdl:input>
+      <wsdl:output message="tns:provideStudentDetailsResponse" name="provideStudentDetailsResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="register">
+      <wsdl:input message="tns:register" name="register"></wsdl:input>
+      <wsdl:output message="tns:registerResponse" name="registerResponse"></wsdl:output>
+      <wsdl:fault message="tns:ServiceException" name="ServiceException"></wsdl:fault>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="IStudentAdministrationServiceServiceSoapBinding" type="tns:IStudentAdministrationService">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="provideStudentDetails">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="provideStudentDetails">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="provideStudentDetailsResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="register">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="register">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="registerResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="ServiceException">
+        <soap:fault name="ServiceException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="IStudentAdministrationServiceService">
+    <wsdl:port binding="tns:IStudentAdministrationServiceServiceSoapBinding" name="IStudentAdministrationServicePort">
+      <soap:address location="http://cnb01.aepona.com:8088/stureg"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>]]></con:content><con:type>http://schemas.xmlsoap.org/wsdl/</con:type></con:part></con:definitionCache><con:endpoints><con:endpoint>http://cnb01.aepona.com:8088/stureg</con:endpoint></con:endpoints><con:operation isOneWay="false" action="" name="provideStudentDetails" bindingOperationName="provideStudentDetails" type="Request-Response" outputName="provideStudentDetailsResponse" inputName="provideStudentDetails" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://cnb01.aepona.com:8088/stureg</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:reg="http://registar.example.camel.jkd.org/">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <reg:provideStudentDetails>
+         <!--Optional:-->
+         <nic>?</nic>
+      </reg:provideStudentDetails>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://registar.example.camel.jkd.org/IStudentAdministrationService/provideStudentDetails"/></con:call></con:operation><con:operation isOneWay="false" action="" name="register" bindingOperationName="register" type="Request-Response" outputName="registerResponse" inputName="register" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://cnb01.aepona.com:8088/stureg</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:reg="http://registar.example.camel.jkd.org/">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <reg:register>
+         <!--Optional:-->
+         <student>
+            <!--Optional:-->
+            <dob>?</dob>
+            <!--Optional:-->
+            <name>?</name>
+            <!--Optional:-->
+            <nic>?</nic>
+            <!--Optional:-->
+            <registrationNumber>?</registrationNumber>
+         </student>
+      </reg:register>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://registar.example.camel.jkd.org/IStudentAdministrationService/register"/></con:call></con:operation></con:interface><con:testSuite name="TS1"><con:settings/><con:runType>SEQUENTIAL</con:runType><con:testCase failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="T1" searchProperties="true"><con:settings/><con:testStep type="request" name="provideStudentDetails"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>IStudentAdministrationServiceServiceSoapBinding</con:interface><con:operation>provideStudentDetails</con:operation><con:request name="provideStudentDetails"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://cnb01.aepona.com:8088/stureg</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:reg="http://registar.example.camel.jkd.org/">
+   <soapenv:Header/>
+   <soapenv:Body>
+   	<reg:provideStudentDetails>
+   		<nic>842060</nic>
+      <reg:provideStudentDetails/>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Response"/><con:credentials><con:authType>Global HTTP Settings</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:properties/></con:testCase><con:properties/></con:testSuite><con:properties/><con:wssContainer/></con:soapui-project>
