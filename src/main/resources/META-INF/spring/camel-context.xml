@@ -22,9 +22,14 @@
 	<camel:camelContext xmlns="http://camel.apache.org/schema/spring">
 		<camel:route>
 			<camel:from uri="cxf:bean:sturegEndpoint" />
-			<camel:to uri="bean:queryTransformer" />
-			<camel:to uri="bean:studentRepo" />
-			<camel:to uri="bean:studentTransformer" />
+			<camel:choice>
+				<camel:when>
+					<camel:simple>${headers.operationName} == 'provideStudentDetails'</camel:simple>
+					<camel:to uri="bean:queryTransformer" />
+					<camel:to uri="bean:studentRepo" />
+					<camel:to uri="bean:studentTransformer" />
+				</camel:when>
+			</camel:choice>
 		</camel:route>
 	</camel:camelContext>
 
